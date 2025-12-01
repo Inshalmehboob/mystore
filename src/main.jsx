@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./styles/global.css";
 import { BrowserRouter } from "react-router-dom";
-import { ProductProvider } from "./context/ProductContext.jsx";
+import { ProductProvider } from "./context/PoductContext.jsx";
 import { CartProvider } from "./context/CartContext";
 import { OrderProvider } from "./context/ordercontext";
 import { AuthProvider } from "./context/authcontext"; 
