@@ -3,11 +3,10 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./styles/global.css";
 import { BrowserRouter } from "react-router-dom";
-import { ProductProvider } from "./context/ProductContext.jsx";
-import { CartProvider } from "./context/CartContext";
-import { OrderProvider } from "./context/ordercontext";
-import { AuthProvider } from "./context/authcontext"; 
-
+import { ProductProvider } from "./context/ProductContext.jsx";   
+import { CartProvider } from "./context/CartContext.jsx";
+import { OrderProvider } from "./context/ordercontext.jsx";       
+import { AuthProvider } from "./context/authcontext.jsx";   
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <AuthProvider> 
