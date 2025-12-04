@@ -12,7 +12,7 @@ import Child from "./pages/child";
 import AdminLogin from "./pages/AdminLogin";
 import About from "./pages/about";
 import Contact from "./pages/contact";
-
+// Force Vercel rebuild
 import { AuthContext } from "./context/authcontext";
 
 const App = () => {
