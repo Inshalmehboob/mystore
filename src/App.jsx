@@ -2,17 +2,17 @@ import React, { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/Header.jsx";
 import Footer from "./components/footer.jsx";
-import Home from "./pages/home";
-import Shop from "./pages/Shop";
-import Cart from "./pages/cart";
-import Admin from "./pages/admin";
-import Men from "./pages/men";
-import Women from "./pages/women";
-import Child from "./pages/child";
-import AdminLogin from "./pages/adminlogin";
-import About from "./pages/about";
-import Contact from "./pages/contact";
-import { AuthContext } from "./context/authcontext";
+import Home from "./pages/home.jsx";
+import Shop from "./pages/Shop.jsx";
+import Cart from "./pages/cart.jsx";
+import Admin from "./pages/admin.jsx";
+import Men from "./pages/men.jsx";
+import Women from "./pages/women,jsx";
+import Child from "./pages/child,jsx";
+import AdminLogin from "./pages/adminlogin,jsx";
+import About from "./pages/about.jsx";
+import Contact from "./pages/contact.jsx";
+import { AuthContext } from "./context/authcontext.jsx";
 
 const App = () => {
   const { user, logout } = useContext(AuthContext);
