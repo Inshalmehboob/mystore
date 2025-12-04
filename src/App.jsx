@@ -2,17 +2,16 @@ import React, { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/Header.jsx";
 import Footer from "./components/footer.jsx";
-import Home from "./pages/Home";
+import Home from "./pages/home";
 import Shop from "./pages/Shop";
-import Cart from "./pages/Cart";
-import Admin from "./pages/Admin";
+import Cart from "./pages/cart";
+import Admin from "./pages/admin";
 import Men from "./pages/men";
 import Women from "./pages/women";
 import Child from "./pages/child";
-import AdminLogin from "./pages/AdminLogin";
+import AdminLogin from "./pages/adminlogin";
 import About from "./pages/about";
 import Contact from "./pages/contact";
-// Force Vercel rebuild
 import { AuthContext } from "./context/authcontext";
 
 const App = () => {
