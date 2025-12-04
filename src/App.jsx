@@ -3,7 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/Header.jsx";
 import Footer from "./components/footer.jsx";
 import Home from "./pages/home.jsx";
-import Shop from "./pages/Shop.jsx";
+import Shop from "./pages/shop.jsx";
 import Cart from "./pages/cart.jsx";
 import Admin from "./pages/admin.jsx";
 import Men from "./pages/men.jsx";
