@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import Header from "./components/header.jsx";
+import Header from "./components/Header.jsx";
 import Footer from "./components/footer.jsx";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
