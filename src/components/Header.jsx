@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Header.css";
-import { CartContext } from "../context/CartContext";
+import { CartContext } from "../context/cartcontext";
 import { AuthContext } from "../context/authcontext";
 
 const Header = () => {
