@@ -2,7 +2,7 @@
   background: #fff;
   color: #000;
   border-bottom: 1px solid #ddd;
-  height: 40px;
+  padding: 10px 0;        /* FIXED: remove fixed height */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,7 +10,6 @@
   top: 0;
   z-index: 1000;
 }
-
 
 .nav-container {
   width: 95%;
@@ -20,7 +19,7 @@
   justify-content: space-between;
 }
 
-
+/* Logo */
 .logo {
   font-size: 1.3rem;
   font-weight: 600;
@@ -31,12 +30,14 @@
   color: black;
 }
 
+/* Desktop Navigation */
 .nav-links {
   display: flex;
   align-items: center;
   gap: 25px;
 }
 
+/* Links */
 .nav-links a {
   text-decoration: none;
   color: black;
@@ -47,6 +48,8 @@
 .nav-links a:hover {
   color: #007bff;
 }
+
+/* Dropdown */
 .dropdown {
   position: relative;
 }
@@ -85,6 +88,7 @@
   background: #f3f3f3;
 }
 
+/* Cart & Admin Actions */
 .nav-actions {
   display: flex;
   align-items: center;
@@ -97,10 +101,24 @@
   font-weight: 500;
 }
 
-.nav-actions a:hover {
-  color: #007bff;
+/* Cart Badge */
+.cart {
+  position: relative;
 }
 
+.cart::after {
+  content: attr(data-count);
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: red;
+  color: white;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  padding: 2px 5px;
+}
+
+/* Admin text button */
 .username {
   font-size: 0.9rem;
   color: #333;
@@ -119,44 +137,46 @@
   background: #e60000;
 }
 
-
-.cart {
-  position: relative;
-}
-
-.cart::after {
-  content: attr(data-count);
-  position: absolute;
-  top: -6px;
-  right: -10px;
-  background: red;
-  color: white;
-  border-radius: 50%;
-  font-size: 0.7rem;
-  padding: 2px 5px;
-}
-.cart-link {
-  margin-left: 10px;
-  color: #000;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.cart-link:hover {
-  text-decoration: underline;
-}
-
-/* Responsive */
+/* ---------- RESPONSIVE FIX ---------- */
 @media (max-width: 768px) {
+
   .nav-container {
-    flex-direction: column;
-    gap: 10px;
-    height: auto;
+    width: 100%;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;   /* FIX */
+    flex-direction: row;              /* FIX */
   }
 
+  /* Logo left rahe */
+  .logo {
+    font-size: 1.1rem;
+    flex: 1;
+  }
+
+  /* Center menu */
   .nav-links {
-    gap: 15px;
-    flex-wrap: wrap;
+    position: absolute;
+    top: 55px;
+    width: 100%;
+    left: 0;
+    background: #fff;
+    padding: 10px 0;
+    display: flex;
     justify-content: center;
+    gap: 20px;
+    border-top: 1px solid #eee;
+  }
+
+  /* Cart always right */
+  .nav-actions {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;  /* FIX */
+  }
+
+  .cart {
+    font-size: 1.3rem;
   }
 }
