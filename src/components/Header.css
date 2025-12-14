@@ -1,23 +1,32 @@
+/* ======================
+   HEADER BASE
+====================== */
 .header {
   background: #fff;
   color: #000;
   border-bottom: 1px solid #ddd;
-  padding: 8px 0;
+  padding: 10px 0;
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
-/* NAV MAIN */
+/* ======================
+   NAV CONTAINER
+====================== */
 .nav-container {
   width: 95%;
   max-width: 1200px;
+  margin: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 
-/* LOGO */
+/* ======================
+   LOGO
+====================== */
 .logo {
   font-size: 1.3rem;
   font-weight: 600;
@@ -25,10 +34,12 @@
   display: flex;
   align-items: center;
   gap: 5px;
-  color: black;
+  color: #000;
 }
 
-/* NAV LINKS */
+/* ======================
+   NAV LINKS (DESKTOP)
+====================== */
 .nav-links {
   display: flex;
   align-items: center;
@@ -37,18 +48,59 @@
 
 .nav-links a {
   text-decoration: none;
-  color: black;
+  color: #000;
   font-weight: 500;
 }
 
-/* CART + ACTIONS */
+/* ======================
+   DROPDOWN
+====================== */
+.dropdown {
+  position: relative;
+}
+
+.dropbtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  min-width: 140px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  z-index: 2000;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 8px 12px;
+}
+
+/* Show dropdown on click */
+.dropdown-content.open {
+  display: block;
+}
+
+/* ======================
+   NAV ACTIONS
+====================== */
 .nav-actions {
   display: flex;
   align-items: center;
   gap: 18px;
 }
 
-/* CART BADGE FIX */
+/* CART BADGE */
 .cart {
   position: relative;
 }
@@ -59,39 +111,72 @@
   top: -6px;
   right: -10px;
   background: red;
-  color: white;
+  color: #fff;
   border-radius: 50%;
   font-size: 0.7rem;
   padding: 2px 5px;
 }
 
-/* 🔥 MOBILE FIX */
+/* ======================
+   HAMBURGER (MOBILE)
+====================== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #000;
+  border-radius: 2px;
+}
+
+/* ======================
+   MOBILE STYLES
+====================== */
 @media (max-width: 768px) {
-  .header {
-    padding: 10px 0;
+
+  /* show hamburger */
+  .hamburger {
+    display: flex;
   }
 
-  .nav-container {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-  }
-
-  /* logo center */
-  .logo {
-    margin-bottom: 6px;
-  }
-
-  /* nav links center */
+  /* hide nav by default */
   .nav-links {
-    gap: 15px;
-    flex-wrap: wrap;
-    justify-content: center;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 20px;
+    display: none;
+    gap: 0;
+    border-top: 1px solid #ddd;
   }
 
-  /* cart + login center */
-  .nav-actions {
-    margin-top: 5px;
+  /* open state */
+  .nav-links.open {
+    display: flex;
   }
+
+  .nav-links a {
+    width: 100%;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  /* dropdown inside mobile */
+  .dropdown-content {
+    position: static;
+    box-shadow: none;
+    border: none;
+    padding-left: 15px;
+  }
+
+ 
 }

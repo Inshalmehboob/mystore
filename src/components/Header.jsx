@@ -6,53 +6,70 @@ import { AuthContext } from "../context/authcontext";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [shopOpen, setShopOpen] = useState(false); // ✅ New state for Shop dropdown
   const navigate = useNavigate();
 
   const { itemCount = 0 } = useContext(CartContext) || {};
   const { user, logout } = useContext(AuthContext) || {};
 
-  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const toggleShop = () => setShopOpen(prev => !prev);
+
+  // Close mobile menu & dropdown when a link is clicked
+  const handleLinkClick = () => {
+    setMenuOpen(false);
+    setShopOpen(false);
+  };
 
   return (
     <header className="header">
       <div className="nav-container">
 
+        {/* Logo */}
         <div className="logo" onClick={() => navigate("/")}>
           🛍️ <span>My Store</span>
         </div>
 
-        <nav className="nav-links">
-          <Link to="/">Home</Link>
+        {/* Hamburger for mobile */}
+        <div
+          className={`hamburger ${menuOpen ? "active" : ""}`}
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
 
+        {/* Navigation links */}
+        <nav className={`nav-links ${menuOpen ? "open" : ""}`}>
+          <Link to="/" onClick={handleLinkClick}>Home</Link>
+
+          {/* Shop Dropdown */}
           <div className="dropdown">
-            <button className="dropbtn" onClick={toggleMenu}>
-              Shop ▼
-            </button>
-
-            {menuOpen && (
-              <div className="dropdown-content">
-                <Link to="/men" onClick={() => setMenuOpen(false)}>Men</Link>
-                <Link to="/women" onClick={() => setMenuOpen(false)}>Women</Link>
-                <Link to="/child" onClick={() => setMenuOpen(false)}>Child</Link>
-              </div>
-            )}
+            <span className="dropbtn" onClick={toggleShop}>
+              Shop
+              <span style={{ marginLeft: "5px" }}>▾</span> {/* Optional arrow */}
+            </span>
+            <div className={`dropdown-content ${shopOpen ? "open" : ""}`}>
+              <Link to="/men" onClick={handleLinkClick}>Men</Link>
+              <Link to="/women" onClick={handleLinkClick}>Women</Link>
+              <Link to="/child" onClick={handleLinkClick}>Child</Link>
+            </div>
           </div>
 
-          
-              <Link to="/about">About</Link>
-              <Link to="/contact">Contact</Link>   
+          <Link to="/about" onClick={handleLinkClick}>About</Link>
+          <Link to="/contact" onClick={handleLinkClick}>Contact</Link>
 
-         
-          {user?.role === "admin" && <Link to="/admin">Admin</Link>}
+          {user?.role === "admin" && (
+            <Link to="/admin" onClick={handleLinkClick}>Admin</Link>
+          )}
         </nav>
 
+        {/* Cart & user actions */}
         <div className="nav-actions">
-
           <Link to="/cart" className="cart" data-count={itemCount}>
             🛒
           </Link>
 
-         
           {user?.role === "admin" && (
             <>
               <span className="username">Hi, Admin</span>
@@ -61,8 +78,6 @@ const Header = () => {
               </button>
             </>
           )}
-
-
         </div>
 
       </div>
