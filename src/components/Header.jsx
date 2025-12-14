@@ -6,7 +6,7 @@ import { AuthContext } from "../context/authcontext";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [shopOpen, setShopOpen] = useState(false); // ✅ New state for Shop dropdown
+  const [shopOpen, setShopOpen] = useState(false); // State for Shop dropdown
   const navigate = useNavigate();
 
   const { itemCount = 0 } = useContext(CartContext) || {};
@@ -39,6 +39,22 @@ const Header = () => {
           <span></span>
         </div>
 
+        {/* Cart & user actions (top-right) */}
+        <div className="nav-actions">
+          <Link to="/cart" className="cart" data-count={itemCount}>
+            🛒
+          </Link>
+
+          {user?.role === "admin" && (
+            <>
+              <span className="username">Hi, Admin</span>
+              <button className="logout-btn" onClick={logout}>
+                Logout
+              </button>
+            </>
+          )}
+        </div>
+
         {/* Navigation links */}
         <nav className={`nav-links ${menuOpen ? "open" : ""}`}>
           <Link to="/" onClick={handleLinkClick}>Home</Link>
@@ -46,8 +62,7 @@ const Header = () => {
           {/* Shop Dropdown */}
           <div className="dropdown">
             <span className="dropbtn" onClick={toggleShop}>
-              Shop
-              <span style={{ marginLeft: "5px" }}>▾</span> {/* Optional arrow */}
+              Shop ▾
             </span>
             <div className={`dropdown-content ${shopOpen ? "open" : ""}`}>
               <Link to="/men" onClick={handleLinkClick}>Men</Link>
@@ -63,22 +78,6 @@ const Header = () => {
             <Link to="/admin" onClick={handleLinkClick}>Admin</Link>
           )}
         </nav>
-
-        {/* Cart & user actions */}
-        <div className="nav-actions">
-          <Link to="/cart" className="cart" data-count={itemCount}>
-            🛒
-          </Link>
-
-          {user?.role === "admin" && (
-            <>
-              <span className="username">Hi, Admin</span>
-              <button className="logout-btn" onClick={logout}>
-                Logout
-              </button>
-            </>
-          )}
-        </div>
 
       </div>
     </header>

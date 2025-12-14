@@ -133,21 +133,32 @@
   background: #000;
   border-radius: 2px;
 }
-
-/* ======================
-   MOBILE STYLES
-====================== */
 @media (max-width: 768px) {
 
-  /* show hamburger */
+  /* Hamburger */
   .hamburger {
     display: flex;
+    position: absolute;
+    top: 10px;
+    right: 60px; /* leave space for cart */
+    z-index: 1600;
   }
 
-  /* hide nav by default */
+  /* Cart & actions */
+  .nav-actions {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 1700; /* above everything */
+  }
+
+  /* Mobile menu links */
   .nav-links {
     position: absolute;
-    top: 60px;
+    top: 60px; /* below header */
     left: 0;
     width: 100%;
     background: #fff;
@@ -157,9 +168,10 @@
     display: none;
     gap: 0;
     border-top: 1px solid #ddd;
+    z-index: 1400; /* below cart & hamburger */
   }
 
-  /* open state */
+  /* Open state */
   .nav-links.open {
     display: flex;
   }
@@ -170,13 +182,14 @@
     border-bottom: 1px solid #eee;
   }
 
-  /* dropdown inside mobile */
+  /* Dropdown inside mobile */
   .dropdown-content {
-    position: static;
-    box-shadow: none;
-    border: none;
+    display: none;
+    flex-direction: column;
     padding-left: 15px;
   }
 
- 
+  .dropdown-content.open {
+    display: flex;
+  }
 }
